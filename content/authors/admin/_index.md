@@ -3,7 +3,7 @@
 title: 周超超
 
 # Name pronunciation (optional)
-name_pronunciation: Chaochao Zhou
+name_pronunciation: Chaochao (Carl) Zhou
 
 # Full name (for SEO)
 first_name: Chaochao
@@ -43,8 +43,8 @@ profiles:
     url: https://www.linkedin.com/in/chaochao-zhou-21962b59/
   - icon: academicons/google-scholar
     url: https://scholar.google.com/citations?user=PYcUZ3YAAAAJ&hl=en
-  # - icon: academicons/orcid
-  #   url: https://orcid.org/0000-0002-2631-2622
+  - icon: academicons/orcid
+    url: https://orcid.org/0000-0002-2631-2622
 
 education:
   - area: PhD, Computational Biomechanics
