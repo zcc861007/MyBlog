@@ -76,4 +76,4 @@ highlight_name: true
 website: ""
 ---
 
-Dr. Chaochao Zhou is a Data Scientist at Musket Corp. His research interests include deep learning, reinforcement learning, and quantitative trading. He is currently engaged in analyzing petroleum market fundamentals, real-time tracking of global oil vessels, and developing predictive models and AI-driven trading strategies.
+Dr. Chaochao Zhou is a Data Scientist at Musket Corp, where he focuses on analyzing petroleum market fundamentals, real-time tracking of global oil vessels, and developing predictive models and AI-driven trading strategies to support intelligent decision-making and optimize trading performance. His current research interests include deep learning, reinforcement learning, and quantitative trading.
