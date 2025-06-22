@@ -1,13 +1,13 @@
 ---
 # Display name
-title: 吳健雄
+title: 周超超
 
 # Name pronunciation (optional)
-name_pronunciation: Chien Shiung Wu
+name_pronunciation: Chaochao Zhou
 
 # Full name (for SEO)
-first_name: Shiung Wu
-last_name: Chien
+first_name: Chaochao
+last_name: Zhou
 
 # Status emoji
 status:
@@ -17,35 +17,57 @@ status:
 superuser: true
 
 # Role/position/tagline
-role: Professor of Artificial Intelligence
+role: Data Scientist
 
 # Organizations/Affiliations to show in About widget
 organizations:
-  - name: Stanford University
-    url: https://www.stanford.edu/
+  - name: Musket Corp.
+    url: https://www.musketcorp.com/
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: My research interests include machine learning, reinforcement learning, and quant trading.
 
 # Social Networking
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
 profiles:
-  - icon: at-symbol
-    url: 'mailto:your-email@example.com'
-    label: E-mail Me
-  - icon: brands/x
-    url: https://twitter.com/GetResearchDev
-  - icon: brands/instagram
-    url: https://www.instagram.com/
+  # - icon: at-symbol
+  #   url: 'mailto:czhouphd@google.com'
+  #   label: E-mail Me
+  # - icon: brands/x
+  #   url: https://x.com/zcc861007
+  # - icon: brands/instagram
+  #   url: https://www.instagram.com/czhouphd/
+  - icon: brands/github
+    url: https://github.com/zcc861007
   - icon: brands/linkedin
-    url: https://www.linkedin.com/
-  # Link to a PDF of your resume/CV - upload it to `static/uploads/resume.pdf`
-  - icon: academicons/cv
-    url: uploads/resume.pdf
-    label: Download my resume
-  - icon: rss
-    url: ./post/index.xml
-    label: Subscribe to my blog via RSS feed
+    url: https://www.linkedin.com/in/chaochao-zhou-21962b59/
+  - icon: academicons/google-scholar
+    url: https://scholar.google.com/citations?user=PYcUZ3YAAAAJ&hl=en
+  # - icon: academicons/orcid
+  #   url: https://orcid.org/0000-0002-2631-2622
+
+education:
+  - area: PhD, Computational Biomechanics
+    institution: State University of New York at Binghamton
+    date_start: 2013-01-01
+    date_end: 2018-08-01
+    summary: |
+      Thesis on Spine Biomechanics and Implant Optimal Design. Supervised by Dr. Ryan Willing (https://www.eng.uwo.ca/mechanical//faculty/willing_r/index.html).
+    button:
+      text: 'Read Thesis'
+      url: 'https://orb.binghamton.edu/dissertation_and_theses/99/'
+  - area: MEng, Computer Science (Data Science Track)
+    institution: University of Illinois Urbana-Champaign
+    date_start: 2022-09-01
+    date_end: 2026-05-01
+    summary: |
+      GPA: 4.0/4.0
+  - area: BSc & MEng, Mechanical Engineering
+    institution: Harbin Institute of Technology
+    date_start: 2005-09-01
+    date_end: 2011-07-01
+    summary: |
+      GPA: 3.4/4.0
 
 # Highlight the author in author lists? (true/false)
 highlight_name: true
@@ -54,6 +76,4 @@ highlight_name: true
 website: ""
 ---
 
-Chien Shiung Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include
-distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops
-self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Dr. Chaochao Zhou is a Data Scientist at Musket Corp. His research interests include machine learning, reinforcement learning, and quantitative trading. He is currently engaged in the analysis of market fundamentals, real-time tracking of global oil vessels, and the development of predictive models and AI-driven trading strategies.
