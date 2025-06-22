@@ -30,9 +30,9 @@ bio: My research interests include machine learning, reinforcement learning, and
 # Social Networking
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
 profiles:
-  # - icon: at-symbol
-  #   url: 'mailto:czhouphd@google.com'
-  #   label: E-mail Me
+  - icon: at-symbol
+    url: 'mailto:czhouphd@google.com'
+    label: E-mail Me
   # - icon: brands/x
   #   url: https://x.com/zcc861007
   # - icon: brands/instagram
@@ -76,4 +76,4 @@ highlight_name: true
 website: ""
 ---
 
-Dr. Chaochao Zhou is a Data Scientist at Musket Corp. His research interests include machine learning, reinforcement learning, and quantitative trading. He is currently engaged in the analysis of market fundamentals, real-time tracking of global oil vessels, and the development of predictive models and AI-driven trading strategies.
+Dr. Chaochao Zhou is a Data Scientist at Musket Corp. His research interests include deep learning, reinforcement learning, and quantitative trading. He is currently engaged in analyzing petroleum market fundamentals, real-time tracking of global oil vessels, and developing predictive models and AI-driven trading strategies.
