@@ -21,7 +21,10 @@ Recently, new deep learning-based, fast, deformable, diffeomorphic registration 
 
 ## Method
 
-We employ HyperMorph, an unsupervised deep learning framework to learn the non-rigid registration fields \(\phi\) that map the background frame \(I_{BG}\) onto the post-contrast angiographic frames \(I_{C}\), as illustrated in Fig. A1. The background frame and a single post-contrast frame are provided to the RegNet, which utilizes a U-Net architecture (with 16, 32, 32, 32 encoder features and 32, 32, 32, 32, 32, 16, 16 decoder features; in total, 14M trainable parameters), and learns the non-rigid morph field \(\phi\) of the background frame (moving image) relative to the contrast frame (fixed image). Subsequently, the learned morph field \(\phi\) is applied to the input background frame \(I_{BG}\), yielding the morphed background frame, denoted by \(I_{BG}' = I_{BG} \circ \phi\), which is the final output of the full deep learning framework (Fig. A1). Background subtraction can then be performed: \(BSA_{reg} = I_{C} - I_{BG}'\).
+We employ HyperMorph, an unsupervised deep learning framework to learn the non-rigid registration fields \(\phi\) that map the background frame \(I_{BG}\) onto the post-contrast angiographic frames \(I_{C}\), as illustrated in Fig. 1. The background frame and a single post-contrast frame are provided to the RegNet, which utilizes a U-Net architecture (with 16, 32, 32, 32 encoder features and 32, 32, 32, 32, 32, 16, 16 decoder features; in total, 14M trainable parameters), and learns the non-rigid morph field \(\phi\) of the background frame (moving image) relative to the contrast frame (fixed image). Subsequently, the learned morph field \(\phi\) is applied to the input background frame \(I_{BG}\), yielding the morphed background frame, denoted by \(I_{BG}' = I_{BG} \circ \phi\), which is the final output of the full deep learning framework (Fig. 1). Background subtraction can then be performed: \(BSA_{reg} = I_{C} - I_{BG}'\).
+
+![Hypermorph framework](fig-1.png)
+**Fig. 1**: Hypermorph unsupervised deep learning framework for registration of background (BG) and post-contrast angiographic frames. The background and post-contrast frames are supplied to RegNet, which predicts a morph field of the background frame relative to the contrast frame. The RegNet weights are determined by HyperNet, which takes a single hyperparameter \(0 \leq \lambda \leq 1\) as input. The morphed background prediction is obtained by applying the morph field to the input background frame. The total loss is a weighted sum of image similarity and a penalty on the spatial gradient of the morph field. HyperNet and RegNet can be trained simultaneously.
 
 ## Loss Formulation
 
@@ -31,7 +34,7 @@ $$
 \mathcal{L} = (1 - \lambda)\frac{\mathcal{L}_{sim}\left( I_{BG}',\ I_{C} \right)}{\alpha_{sim}^{2}} + \lambda\mathcal{L}_{smooth}(\phi) \tag{1}
 $$
 
-where \(0 \leq \lambda \leq 1\) determines the relative weight between the image similarity loss and the smoothing penalty. \(\lambda\) is the only input to HyperNet, which is a multi-layer perceptron (consisting of 4 fully-connected layers with 32, 64, 128, 128 features and ReLU activations; in total, 27K trainable parameters), and generates the weights and biases \(\theta_{reg}\) of the RegNet (Fig. A1). We set the scaling parameter \(\alpha_{sim} = 0.3\), such that \(\mathcal{L}_{sim}/\alpha_{sim}^{2}\) and \(\mathcal{L}_{smooth}\) have approximately equivalent magnitude when \(\lambda = 0.5\).
+where \(0 \leq \lambda \leq 1\) determines the relative weight between the image similarity loss and the smoothing penalty. \(\lambda\) is the only input to HyperNet, which is a multi-layer perceptron (consisting of 4 fully-connected layers with 32, 64, 128, 128 features and ReLU activations; in total, 27K trainable parameters), and generates the weights and biases \(\theta_{reg}\) of the RegNet (Fig. 1). We set the scaling parameter \(\alpha_{sim} = 0.3\), such that \(\mathcal{L}_{sim}/\alpha_{sim}^{2}\) and \(\mathcal{L}_{smooth}\) have approximately equivalent magnitude when \(\lambda = 0.5\).
 
 Smoothness of the registration field can be enforced by minimizing the magnitude of the spatial gradient of the morph field:
 
@@ -67,7 +70,7 @@ $$
 \mathcal{L}_{sim}\left( I_{BG}',\ I_{C} \right) = MSE\left( I_{BG}',\ I_{C} - L_{vessel} \right) \tag{5}
 $$
 
-To isolate the vessel layer, we perform an anomaly detection step, in which the vascular densities are identified by their low intensity. As illustrated in Fig. A1, we compare the value of a pixel in the post-contrast frame to the values within the neighborhood (e.g., a patch with 3 x 3 pixels) of the corresponding pixel in the background frame. If the pixel value of the contrast frame is less than all pixel values in the corresponding neighborhood of the background frame, it suggests that the low density of the pixel in the post-contrast frame is due to contrast injection. With this in mind, the separated vessel layer can be formulated as:
+To isolate the vessel layer, we perform an anomaly detection step, in which the vascular densities are identified by their low intensity. As illustrated in Fig. 1, we compare the value of a pixel in the post-contrast frame to the values within the neighborhood (e.g., a patch with 3 x 3 pixels) of the corresponding pixel in the background frame. If the pixel value of the contrast frame is less than all pixel values in the corresponding neighborhood of the background frame, it suggests that the low density of the pixel in the post-contrast frame is due to contrast injection. With this in mind, the separated vessel layer can be formulated as:
 
 $$
 L_{vessel} = \left( I_{C} - I_{BG}' \right) * \mathbf{1}\left( I_{C} < \min\_pool\left( I_{BG}' \right) \right) \tag{6}
@@ -77,13 +80,12 @@ where \(I_{C} - I_{BG}'\) is the BSA with registration learning. \(*\) denotes p
 
 ## A.4. Model Training
 
-Each model (Reg-MSE, Reg-MinMax, and Reg-VLE) was trained on a dataset consisting of 5046 angiographic series over 10 dataset-level epochs (Fig. A2). For each series-level training iteration in each epoch, 50 frames were randomly selected with replacement from each of the 5046 angiographic series, and the model was trained on these 50 frames. This random selection of a fixed number of frames was employed to reduce overfitting or overweighting of any single angiographic series, as some series contain many more frames than others. Overall, there are 50,460 series-level iterations across the 10 dataset-level epochs, constituting 2,523,000 frame-level iterations.
+Each model (Reg-MSE, Reg-MinMax, and Reg-VLE) was trained on a dataset consisting of 5046 angiographic series over 10 dataset-level epochs (Fig. 2). For each series-level training iteration in each epoch, 50 frames were randomly selected with replacement from each of the 5046 angiographic series, and the model was trained on these 50 frames. This random selection of a fixed number of frames was employed to reduce overfitting or overweighting of any single angiographic series, as some series contain many more frames than others. Overall, there are 50,460 series-level iterations across the 10 dataset-level epochs, constituting 2,523,000 frame-level iterations.
+
+![Learning curves](fig-2.png)
+**Fig. 2**: Learning curves for the Reg-MSE (a), Reg-MinMax (b), and Reg-VLE (c) BSA models. The loss is the weighted sum of the image similarity loss and the smoothing penalty loss (Eq. 1).
 
 During the training process, we manually examined the model outputs, and observed overfitting with excessive local warping (accordingly, causing new artifacts in the vessel regions of BSA images) at smaller smoothing penalties \(\lambda\) and at longer training durations. Conversely, regularization of the model outputs could be achieved with larger smoothing penalties and shorter training durations. Furthermore, longer training durations required larger magnitudes of \(\lambda\) to suppress overfitting but did not substantially improve BSA image quality. As a result of this observation, and to reduce the computational cost, we performed regularization by early stopping at 10 dataset-level epochs, and then subsequently chose the optimal \(\lambda\) hyperparameter. On a single RTX A6000 GPU, the training duration with 2,523,000 frame-level iterations was approximately 4 days for each model. Future work may be performed to more thoroughly characterize the interaction between training duration and the optimal magnitude of \(\lambda\).
-
-![Fig. A1: Hypermorph unsupervised deep learning framework for registration of background (BG) and post-contrast angiographic frames. The background and post-contrast frames are supplied to RegNet, which predicts a morph field of the background frame relative to the contrast frame. The RegNet weights are determined by HyperNet, which takes a single hyperparameter \(0 \leq \lambda \leq 1\) as input. The morphed background prediction is obtained by applying the morph field to the input background frame. The total loss is a weighted sum of image similarity and a penalty on the spatial gradient of the morph field. HyperNet and RegNet can be trained simultaneously.](fig-a1.png)
-
-![Fig. A2: Learning curves for the Reg-MSE (a), Reg-MinMax (b), and Reg-VLE (c) BSA models. The loss is the weighted sum of the image similarity loss and the smoothing penalty loss (Eq. 1).](fig-a2.png)
 
 ## References
 
