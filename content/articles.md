@@ -7,4 +7,4 @@ share: false
 
 All blog posts:
 
-- [Unsupervised Deep Learning for Deformable Registration]({{< relref "blog/Unsup-DL-for-Def-Reg" >}})
+- [Deformable Registration for Angiographic Background Subtraction Using Unsupervised Deep Learning]({{< relref "blog/Unsup-DL-for-Def-Reg" >}})
