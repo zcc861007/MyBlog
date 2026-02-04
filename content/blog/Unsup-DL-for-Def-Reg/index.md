@@ -1,16 +1,13 @@
 ﻿---
-title: "Unsupervised Deep Learning for Deformable Registration"
+title: "Deformable Registration for Angiographic Background Subtraction Using Unsupervised Deep Learning"
 date: 2026-02-04
 authors:
   - admin
 tags:
-  - image-registration
-  - medical-imaging
-  - deep-learning
-  - unsupervised-learning
+  - image-processing-and-analysis
 categories:
   - research
-summary: "We apply HyperMorph to learn non-rigid registration fields for angiographic background subtraction and compare MSE, MinMax, and VLE similarity losses."
+summary: "We apply unsupervised deep learning to learn non-rigid registration fields for angiographic background subtraction and compare MSE, MinMax, and VLE similarity losses."
 math: true
 draft: false
 ---
