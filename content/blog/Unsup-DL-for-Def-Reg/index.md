@@ -44,7 +44,7 @@ $$
 
 We evaluated multiple image similarity loss functions \(\mathcal{L}_{sim}\) for our task. Notably, we aim to register a non-contrast background frame onto an image with post-contrast vascular densities, introducing a form of spatially heterogenous domain translation on top of the registration task. For this reason, we develop loss functions that strongly weight the bone and soft tissue densities that are common to both frames while simultaneously reducing the impact of regions with injected contrast.
 
-## A.1. Registration with MSE Similarity Loss (Reg-MSE)
+### Registration with MSE Similarity Loss (Reg-MSE)
 
 Our baseline model utilizes mean squared error (MSE), as in HyperMorph, to evaluate the image similarity between the morphed background frame \(I_{BG}'\) and the fixed contrast frame \(I_{C}\):
 
@@ -52,7 +52,7 @@ $$
 \mathcal{L}_{sim}(I_{BG}',\ I_{C}) = MSE\left( I_{BG}',\ I_{C} \right) = \left\| I_{BG}' - I_{C} \right\|^{2} \tag{3}
 $$
 
-## A.2. Registration with MinMax Similarity Loss (Reg-MinMax)
+### Registration with MinMax Similarity Loss (Reg-MinMax)
 
 The MSE loss cannot differentiate between 1) bone and soft tissue densities that are common to both frames and 2) the vascular densities that are present in only the post-contrast frame. As demonstrated in our experiments, this makes the MSE loss prone to overfitting the injected contrast by introducing large displacements that move adjacent bone into nearby vascular densities to minimize the MSE.
 
@@ -62,7 +62,7 @@ $$
 \mathcal{L}_{sim}\left( I_{BG}',\ I_{C} \right) = \frac{MSE\left( \min( I_{BG}',\ I_{C} ),\ I_{C} \right) + MSE\left( \max( I_{BG}',\ I_{C} ),\ I_{BG}' \right)}{2} \tag{4}
 $$
 
-## A.3. Registration with Vessel Layer Estimation (Reg-VLE)
+### Registration with Vessel Layer Estimation (Reg-VLE)
 
 In an alternative approach, we propose an image similarity loss function that evaluates the MSE between the morphed background frame \(I_{BG}'\) and the fixed contrast frame \(I_{C}\) after exclusion of an iteratively refined estimate of the vessel layer \(L_{vessel}\). This image similarity loss is expressed as:
 
@@ -78,7 +78,7 @@ $$
 
 where \(I_{C} - I_{BG}'\) is the BSA with registration learning. \(*\) denotes pixel-wise multiplication. \(\mathbf{1}(condition)\) is a pixel-wise indicator function, which returns 1 if the condition is satisfied and 0 otherwise. \(\min\_pool\left( I_{BG}' \right)\) represents the minimum pooling of \(I_{BG}'\) with a kernel size of 3 x 3, a stride of 1, and same padding. The output has the same shape as \(I_{BG}'\), and is equivalent to obtaining the minimal values in all 3 x 3 patches centered at each pixel of \(I_{BG}'\).
 
-## A.4. Model Training
+## Model Training
 
 Each model (Reg-MSE, Reg-MinMax, and Reg-VLE) was trained on a dataset consisting of 5046 angiographic series over 10 dataset-level epochs (Fig. 2). For each series-level training iteration in each epoch, 50 frames were randomly selected with replacement from each of the 5046 angiographic series, and the model was trained on these 50 frames. This random selection of a fixed number of frames was employed to reduce overfitting or overweighting of any single angiographic series, as some series contain many more frames than others. Overall, there are 50,460 series-level iterations across the 10 dataset-level epochs, constituting 2,523,000 frame-level iterations.
 

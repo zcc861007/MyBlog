@@ -6,4 +6,4 @@ reading_time: false
 
 All blog posts:
 
-- [Unsupervised Deep Learning for Deformable Registration](/content/blog/Unsup-DL-for-Def-Reg/)
+- [Unsupervised Deep Learning for Deformable Registration]({{< relref "blog/Unsup-DL-for-Def-Reg" >}})
