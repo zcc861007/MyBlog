@@ -47,21 +47,22 @@ profiles:
     url: https://orcid.org/0000-0002-2631-2622
 
 education:
-  - area: PhD, Computational Biomechanics
-    institution: State University of New York at Binghamton
-    date_start: 2013-01-01
-    date_end: 2018-08-01
-    summary: |
-      Thesis on Spine Biomechanics and Implant Optimal Design. Supervised by Dr. Ryan Willing (https://www.eng.uwo.ca/mechanical//faculty/willing_r/index.html).
-    button:
-      text: 'Read Thesis'
-      url: 'https://orb.binghamton.edu/dissertation_and_theses/99/'
-  - area: MEng, Computer Science (Data Science Track)
+  - area: MEng, Computer Science
     institution: University of Illinois Urbana-Champaign
     date_start: 2022-09-01
     date_end: 2026-05-01
     summary: |
       GPA: 4.0/4.0
+  - area: PhD, Computational Biomechanics
+    institution: State University of New York at Binghamton
+    date_start: 2013-01-01
+    date_end: 2018-08-01
+    summary: |
+      GPA: 3.8/4.0
+      Thesis on Spine Biomechanics and Implant Optimal Design. Supervised by Dr. Ryan Willing (https://www.eng.uwo.ca/mechanical//faculty/willing_r/index.html).
+    button:
+      text: 'Read Thesis'
+      url: 'https://orb.binghamton.edu/dissertation_and_theses/99/'
   - area: BSc & MEng, Mechanical Engineering
     institution: Harbin Institute of Technology
     date_start: 2005-09-01
