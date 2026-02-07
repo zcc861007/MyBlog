@@ -1,9 +1,9 @@
 ---
 # Display name
-title: 周超超
+title: Chaochao Zhou, Ph.D.
 
-# Name pronunciation (optional)
-name_pronunciation: Chaochao (Carl) Zhou
+# # Name pronunciation (optional)
+# name_pronunciation: Chaochao Zhou
 
 # Full name (for SEO)
 first_name: Chaochao
@@ -76,4 +76,4 @@ highlight_name: true
 website: ""
 ---
 
-Dr. Chaochao Zhou is a Data Scientist at Musket Corp, where he focuses on analyzing petroleum market fundamentals, real-time tracking of global oil vessels, and developing predictive models and AI-driven trading strategies to support intelligent decision-making and optimize trading performance. His current research interests include deep learning, reinforcement learning, and quantitative trading.
+I am a Data Scientist at Musket Corp, where I focus on analyzing petroleum market fundamentals, real-time tracking of global oil vessels, and developing predictive models and AI-driven trading strategies to support intelligent decision-making and optimize trading performance. My current research interests include deep learning, reinforcement learning, and quantitative trading.
