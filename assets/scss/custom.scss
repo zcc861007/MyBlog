@@ -1,0 +1,11 @@
+.articles-collection .section-heading {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.articles-collection .section-heading h1,
+.articles-collection .section-heading h2 {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
