@@ -1,5 +1,6 @@
 ﻿---
 title: Articles
+type: landing
 sections:
   - block: collection
     content:  
