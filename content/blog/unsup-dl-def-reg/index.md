@@ -1,5 +1,5 @@
 ﻿---
-title: "Deformable Registration for Angiographic Background Subtraction Using Unsupervised Deep Learning"
+title: "Unsupervised Deep Learning–Based Deformable Registration for Angiographic Background Subtraction"
 date: 2026-02-04
 authors:
   - admin
