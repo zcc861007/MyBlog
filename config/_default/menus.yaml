@@ -5,10 +5,10 @@ main:
   - name: Home
     url: /
     weight: 10
-  - name: Articles
-    url: articles/
-    weight: 20
   - name: Topics
     url: tags/
+    weight: 20
+  - name: Articles
+    url: articles/
     weight: 30
 

@@ -1,4 +1,3 @@
 ---
 title: Topics
-type: landing
 ---

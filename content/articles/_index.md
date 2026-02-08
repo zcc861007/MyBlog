@@ -3,7 +3,8 @@ title: Articles
 type: landing
 sections:
   - block: collection
-    content:  
+    content:
+      title: Articles  
       filters:
         folders:
           - blog
