@@ -4,7 +4,7 @@ type: landing
 sections:
   - block: collection
     content:
-      title: Articles
+      title: Articles  
       filters:
         folders:
           - blog
