@@ -1,10 +1,8 @@
 ﻿---
 title: Articles
-type: landing
 sections:
   - block: collection
-    content:
-      title: Articles  
+    content:  
       filters:
         folders:
           - blog
