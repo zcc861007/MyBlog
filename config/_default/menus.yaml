@@ -8,6 +8,9 @@ main:
   - name: Topics
     url: tags/
     weight: 20
+  # - name: Articles
+  #   url: articles/
+  #   weight: 30
   - name: Resume
     url: resume/
     weight: 30
