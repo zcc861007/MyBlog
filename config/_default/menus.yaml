@@ -11,4 +11,7 @@ main:
   # - name: Articles
   #   url: articles/
   #   weight: 30
+  - name: Resume
+    url: resume/
+    weight: 30
 
