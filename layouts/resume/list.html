@@ -1,0 +1,49 @@
+{{ define "main" }}
+
+{{ $header := .Params.header | default dict }}
+{{ $title_size := index $header "title_size" | default "6xl" }}
+{{ $prose_size := index $header "prose_size" | default "sm" }}
+
+<div class="max-w-prose mx-auto flex justify-center">
+  <article class="prose prose-slate dark:prose-invert{{ if eq $prose_size "sm" }} lg:prose-sm{{ else if eq $prose_size "base" }} lg:prose-base{{ else if eq $prose_size "lg" }} lg:prose-lg{{ else if eq $prose_size "xl" }} lg:prose-xl{{ else }} lg:prose-sm{{ end }}">
+    <h1 class="{{ if eq $title_size "4xl" }}lg:text-4xl{{ else if eq $title_size "5xl" }}lg:text-5xl{{ else if eq $title_size "7xl" }}lg:text-7xl{{ else }}lg:text-6xl{{ end }}">{{ .Title }}</h1>
+    {{ .Content }}
+  </article>
+</div>
+
+{{ $view := .Params.view | default "card" }}
+{{ $block := . }}
+
+{{ $paginator := .Paginate .Pages.ByDate.Reverse }}
+{{ $config := dict
+  "columns" (.Params.columns | default 2)
+  "len" (len $paginator.Pages)
+  "fill_image" (.Params.fill_image | default true)
+  "show_date" (.Params.show_date | default true)
+  "show_read_time" (.Params.show_read_time | default true)
+  "show_read_more" (.Params.show_read_more | default true)
+}}
+
+{{/* Check if any pages have author_notes to enable Alpine.js */}}
+{{ range .Pages }}
+  {{ if isset .Params "author_notes" }}
+    {{ $.Store.Set "has_alpine" true }}
+    {{ break }}
+  {{ end }}
+{{ end }}
+
+<div class="flex flex-col items-center">
+
+  {{ partial "functions/render_view" (dict "fragment" "start" "page" $block "item" . "view" $view "config" $config) }}
+
+  {{ range $index, $item := $paginator.Pages }}
+  {{ partial "functions/render_view" (dict "page" . "item" . "view" $view "index" $index "config" $config) }}
+  {{ end }}
+
+  {{ partial "functions/render_view" (dict "fragment" "end" "page" $block "item" . "view" $view) }}
+
+  {{ partial "components/paginator" . }}
+
+</div>
+
+{{ end }}

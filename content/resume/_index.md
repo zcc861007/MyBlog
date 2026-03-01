@@ -1,5 +1,7 @@
 ---
 title: Resume
+header:
+  prose_size: sm
 ---
 
 ## Industry & Research Experience
